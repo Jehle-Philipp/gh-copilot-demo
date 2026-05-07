@@ -8,6 +8,7 @@ A modern Vue.js 3 application built with TypeScript that displays albums from th
 - 🎨 Modern, responsive design with gradient background
 - 🖼️ Album cover images with hover effects
 - 💰 Price display for each album
+- 🛒 Cart badge and cart details panel with add/remove support
 - 📱 Mobile-friendly responsive design
 - ⚡ Built with Vue 3, TypeScript, and Vite
 - 🔧 Full TypeScript support with type safety
@@ -57,6 +58,8 @@ The API should return albums in the following format:
 - `npm run build` - Build for production (with TypeScript compilation)
 - `npm run preview` - Preview production build
 - `npm run type-check` - Run TypeScript type checking without building
+- `npm test` - Run Vitest unit/component tests
+- `npm run test:e2e` - Run Playwright end-to-end tests
 
 ## Project Structure
 

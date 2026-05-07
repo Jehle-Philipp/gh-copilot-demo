@@ -21,7 +21,14 @@
     </div>
     
     <div class="album-actions">
-      <button class="btn btn-primary">Add to Cart</button>
+      <button
+        class="btn btn-primary"
+        @click="addToCart"
+        :aria-label="`Add ${album.title} to cart`"
+        :data-testid="`add-to-cart-${album.id}`"
+      >
+        Add to Cart
+      </button>
       <button class="btn btn-secondary">Preview</button>
     </div>
   </div>
@@ -34,7 +41,14 @@ interface Props {
   album: Album
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+const emit = defineEmits<{
+  (event: 'add-to-cart', album: Album): void
+}>()
+
+const addToCart = (): void => {
+  emit('add-to-cart', props.album)
+}
 
 const handleImageError = (event: Event): void => {
   const target = event.target as HTMLImageElement
