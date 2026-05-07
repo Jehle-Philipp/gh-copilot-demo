@@ -52,3 +52,17 @@ export function validateIPV6(input: string): boolean {
 
 	return ipv6Regex.test(trimmedInput)
 }
+
+export function validatePhoneNumber(input: string): boolean {
+	const trimmedInput = input.trim()
+
+	if (!trimmedInput) {
+		throw new Error('Phone number is required')
+	}
+
+	// Accept either an international E.164-like number or a local US dashed format.
+	const internationalPhoneRegex = /^\+[1-9]\d{7,14}$/
+	const usLocalPhoneRegex = /^\d{3}-\d{3}-\d{4}$/
+
+	return internationalPhoneRegex.test(trimmedInput) || usLocalPhoneRegex.test(trimmedInput)
+}

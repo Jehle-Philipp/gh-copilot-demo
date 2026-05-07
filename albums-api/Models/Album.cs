@@ -1,15 +1,15 @@
 ﻿namespace albums_api.Models
 {
-    public record Album(int Id, string Title, Artist Artist, int year, double Price, string Image_url)
+    public record Album(int Id, string Title, int ArtistId, int GenreId, int? ReleaseYear)
     {
         private static readonly List<Album> _albums = new()
         {
-            new Album(1, "You, Me and an App Id", new Artist("Daprize", new DateTime(1998, 3, 10), "Seattle, USA"), 2024, 10.99, "https://aka.ms/albums-daprlogo"),
-            new Album(2, "Seven Revision Army", new Artist("The Blue-Green Stripes", new DateTime(1992, 7, 24), "Austin, USA"), 2024, 13.99, "https://aka.ms/albums-containerappslogo"),
-            new Album(3, "Scale It Up", new Artist("KEDA Club", new DateTime(1995, 11, 2), "Dublin, Ireland"), 2024, 13.99, "https://aka.ms/albums-kedalogo"),
-            new Album(4, "Lost in Translation", new Artist("MegaDNS", new DateTime(1990, 1, 18), "Amsterdam, Netherlands"), 2023, 12.99, "https://aka.ms/albums-envoylogo"),
-            new Album(5, "Lock Down Your Love", new Artist("V is for VNET", new DateTime(1989, 9, 6), "London, UK"), 2022, 12.99, "https://aka.ms/albums-vnetlogo"),
-            new Album(6, "Sweet Container O' Mine", new Artist("Guns N Probeses", new DateTime(1987, 5, 30), "Los Angeles, USA"), 2021, 14.99, "https://aka.ms/albums-containerappslogo")
+            new Album(1, "You, Me and an App Id", 1, 6, 2024),
+            new Album(2, "Seven Revision Army", 2, 1, 2024),
+            new Album(3, "Scale It Up", 3, 6, 2024),
+            new Album(4, "Lost in Translation", 4, 3, 2023),
+            new Album(5, "Lock Down Your Love", 5, 2, 2022),
+            new Album(6, "Sweet Container O' Mine", 6, 1, 2021)
         };
 
         public static List<Album> GetAll()
@@ -24,7 +24,7 @@
 
         public static List<Album> GetByYear(int targetYear)
         {
-            return _albums.Where(a => a.year == targetYear).ToList();
+            return _albums.Where(a => a.ReleaseYear == targetYear).ToList();
         }
 
         public static Album Create(Album album)
